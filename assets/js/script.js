@@ -157,3 +157,38 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+function createLanguageElements(languages) {
+  let ul = document.getElementById('langagespref');
+  for (let language of languages) {
+    let li = document.createElement('li');
+    li.classList.add('skills-item');
+    let titleWrapper = document.createElement('div');
+    titleWrapper.classList.add('title-wrapper');
+    let h5 = document.createElement('h5');
+    h5.classList.add('h5');
+    let h5Text = document.createTextNode(language.name);
+    h5.appendChild(h5Text);
+    titleWrapper.appendChild(h5);
+    let data = document.createElement('data');
+    data.setAttribute('value', language.percentage);
+    let dataText = document.createTextNode(language.percentage + '%');
+    data.appendChild(dataText);
+    titleWrapper.appendChild(data);
+    li.appendChild(titleWrapper);
+    let skillProgressBg = document.createElement('div');
+    skillProgressBg.classList.add('skill-progress-bg');
+    let skillProgressFill = document.createElement('div');
+    skillProgressFill.classList.add('skill-progress-fill');
+    skillProgressFill.style.width = language.percentage + '%';
+    skillProgressBg.appendChild(skillProgressFill);
+    li.appendChild(skillProgressBg);
+    ul.appendChild(li);
+  }
+}
+
+let languages = [
+  {name: 'Python', percentage: '80'},
+  {name: 'JavaScript', percentage: '70'},
+  {name: 'C++', percentage: '60'},
+];
+createLanguageElements(languages);
