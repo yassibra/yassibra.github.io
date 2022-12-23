@@ -185,10 +185,21 @@ function createLanguageElements(languages) {
     ul.appendChild(li);
   }
 }
+async function getData() {
+  try {
+    const response = await fetch('http://139.59.215.64:3000/getPercentage');
+    const data = await response.json();
+    console.log(data);  // The data returned by the API
+    createLanguageElements(data.sort((a, b) => b.percentage - a.percentage));
+  } catch (error) {
+    console.error(error);  // If there was an error making the request
+  }
+}
 
-let languages = [
-  {name: 'Python', percentage: '80'},
-  {name: 'JavaScript', percentage: '70'},
-  {name: 'C++', percentage: '60'},
-];
-createLanguageElements(languages);
+// var languages = getData();
+getData();
+// let languages = [
+//   {name: 'Python', percentage: '80'},
+//   {name: 'JavaScript', percentage: '70'},
+//   {name: 'C++', percentage: '60'},
+// ];
