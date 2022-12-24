@@ -187,7 +187,7 @@ function createLanguageElements(languages) {
 }
 async function getData() {
   try {
-    const response = await fetch('http://139.59.215.64:3000/getPercentage');
+    const response = await fetch('https://whereismycar.me:3000/getPercentage');
     const data = await response.json();
     console.log(data);  // The data returned by the API
     createLanguageElements(data.sort((a, b) => b.percentage - a.percentage));
